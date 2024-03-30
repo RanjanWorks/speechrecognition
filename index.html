@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A advanced speech recognition made by ranjan">
+  <meta name="keywords" content="speech reco, web development">
+  <meta name="author" content="Ranjan Kashyap">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="speech recognition by Ranjan">
+  <meta property="og:description" content="A speech recognition website developed by Ranjan">
+  <meta property="og:url" content="https://speechsynthesis.ranjankashyap1.repl.co">
+  <meta property="og:type" content="website">
+  <link rel="image_src"
+    href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_sTjoVkwUQABobczlxEw833wfJ0ZOgrYV3A&usqp=CAU">
+  <!-- <link rel="manifest" href="manifest.json" /> -->
+  <link rel="shortcut icon" type="image/png" href="https://i.ibb.co/zF3dR1M/icon-8.png">
+
+  <link rel="stylesheet" href="https://m2.material.io/design/iconography/animated-icons.html#usage" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>Speech Recognition By ranjan</title>
+</head>
+
+<body>
+  <header>
+    <div>
+      <span id="title">Speech</span> <span id="tagline">Recognition</span>
+      <span id="beta">Beta</span>
+    </div>
+    <div id="root"></div>
+  </header>
+
+  <main id="main">
+    <section class="section" id="section1">
+     <div class="text" contenteditable="true" id="result">
+      <p class="interim"></p>
+     </div>
+    </section>
+    <section id="section2" class="section">
+      <span id="mic">
+        <i id="micInner" class="material-icons">mic</i>
+        <divd style="display: none" id="wave" class="wave">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </divd>
+      </span>
+    </section>
+  </main>
+  <div class="controls">
+    <div class="center">
+      <span id="copy">
+        <i class="material-icons">content_copy</i>
+      </span>
+      <span id="clear">
+        <i class="material-icons">backspace</i>
+      </span>
+      <span id="speak">
+        <i class="material-icons">volume_up</i>
+      </span>
+    
+    </div>
+
+    <div class="wrapper">
+      <div class="btn-group dropup">
+        <button id="btshow" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Language
+        </button>
+        <ul class="dropdown-menu dropdown-menu-start">
+          <li class="lang_list">
+            <button class="dropdown-item" type="button">English</button>
+          </li>
+          <li class="lang_list">
+            <button class="dropdown-item" type="button">Hindi</button>
+          </li>
+          <li class="lang_list">
+            <button class="dropdown-item" type="button">Tamil</button>
+          </li>
+          <li class="lang_list">
+            <button class="dropdown-item" type="button">Telgu</button>
+          </li>
+          <li class="lang_list">
+            <button class="dropdown-item" type="button">Bengali</button>
+          </li>
+          <li class="lang_list">
+            <button class="dropdown-item" type="button">Punjabi</button>
+          </li>
+          <li class="lang_list">
+            <button class="dropdown-item" type="button">Sanskrit</button>
+          </li>
+          <li class="lang_list">
+            <button class="dropdown-item" type="button">Urdu</button>
+          </li>
+        </ul>
+      </div>
+      <span onclick="openSettings()" id="setting">
+        <i class="material-icons">settings</i>
+      </span>
+    </div>
+  </div>
+  <dialog>
+    <h3 id="err">Error Occured</h3>
+    <p id="errmsg">
+      Speech recognition failed to understand your input. Please speak clearly
+      and check your microphone settings. Retry or type your message !
+    </p>
+    <div class="btns">
+      <button onclick="cancelError()">Cancel</button>
+      <button onclick="restartRecognition()">Restart</button>
+    </div>
+  </dialog>
+  <div class="model">
+    <h3 id="h3">
+      <i onclick="closeSettings()" class="material-icons">keyboard_backspace</i>
+      Settings
+    </h3>
+    <div class="body">
+
+      <div class="set">
+        <div class="wrap">
+          <h6>Dark Mode</h6>
+          <p>when turned on Everything will be dark best for eye care</p>
+        </div>
+        <div class="wrap">
+          <input type="checkbox" id="dark" />
+          <label for="dark"></label>
+        </div>
+      </div>
+      <div class="set">
+        <div class="wrap">
+          <h6>Remove previouse text</h6>
+          <p>when turned on the previouse text will be removed</p>
+        </div>
+        <div class="wrap">
+          <input type="checkbox" id="text" />
+          <label for="text"></label>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <button onclick="closeSettings()">Close</button>
+    </div>
+  </div>
+   <script src="https://cdn.ranjankashyap1.repl.co/profile.js"></script>
+  <script>
+    new profile("#root");
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>
